@@ -1,0 +1,18 @@
+# Carpetas de compilación
+build/
+dist/
+
+# Archivos compilados de Java
+*.class
+
+# Archivos temporales
+*.log
+
+# NetBeans (configuración local)
+nbproject/private/
+
+# Archivos del sistema (Mac)
+.DS_Store
+
+# Ignorar todas las clases Java
+*.java
