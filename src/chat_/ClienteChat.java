@@ -1,3 +1,10 @@
+/*
+1.- ServidorChat.java debe ejecutarse primero
+2.- ClienteChat.java debe ejecutarse después:
+    Esta clase 'ClienteChat.java' puede ejecutarse las veces que se desee
+    para agregar a más de un cliente al chat.
+*/
+
 //Cliente se conecta al SERVIDOR
 //Se crea un hilo de este cliente para escuchar al SERVIDOR
 //Se mantiene un hilo para mandar mensajes al SERVIDOR
@@ -10,12 +17,17 @@ import java.util.Scanner;
 public class ClienteChat {
     private static String nombre;        
     
-    public static void main(String[] args) {        
-        //Se apunta a la ip y puerto del SERVIDOR
-        String ipServidor = "192.168.1.4";         
-        int puerto = 1234;
-        
+    public static void main(String[] args) {                
+        //Se apunta a la ip y puerto del SERVIDOR         
+        System.out.print("Introduce la IP del servidor (deja en blanco para localhost): ");
         Scanner scan = new Scanner(System.in);
+        String ipServidor = scan.nextLine();
+        
+        if (ipServidor.isEmpty()) {
+            ipServidor = "127.0.0.1";
+        }
+        
+        int puerto = 1234;                
 
         //Se establece conexión al servidor del chat
         try (Socket socket = new Socket(ipServidor, puerto)) {
@@ -35,7 +47,7 @@ public class ClienteChat {
             while (true) {
                 String mensaje = nombre + ": " + scan.nextLine();
                 
-                if (mensaje.equalsIgnoreCase("salir")) {
+                if (mensaje.equalsIgnoreCase(nombre + ": salir")) {
                     break;
                 }
                 
@@ -50,6 +62,7 @@ public class ClienteChat {
             System.err.println("Error de conexión: " + e.getMessage());
         }
     }
+        
 }
 
 // Clase interna para manejar la recepción de datos desde el SERVIDOR sin bloquear el teclado/consola para mandar mensajes

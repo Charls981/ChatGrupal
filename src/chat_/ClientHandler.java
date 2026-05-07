@@ -1,3 +1,10 @@
+/*
+1.- ServidorChat.java debe ejecutarse primero
+2.- ClienteChat.java debe ejecutarse después:
+    Esta clase 'ClienteChat.java' puede ejecutarse las veces que se desee
+    para agregar a más de un cliente al chat.
+*/
+
 //Hilo independiente del cliente
 //El servidor pregunta por el nombre al cliente conectado.
 //El hilo independiente hace que el servidor:
